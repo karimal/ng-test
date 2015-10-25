@@ -1,0 +1,33 @@
+<!doctype html>
+<html ng-app="bookLibraryApp">
+  <head>
+  	<title>Books Library App</title>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+  	<div class="container" ng-controller="BooksEditController">
+  		<div>
+		    <h2>Books Library</h2>
+		    <hr />
+		    <form>
+		    	<div>
+	    			<input class="form-control" type="text" placeholder="Book Name" ng-model="booksList.book.name" />
+	    			<input class="form-control" type="text" placeholder="Author" ng-model="booksList.book.author" />
+	    			<input class="form-control" type="text" placeholder="Publish Year" ng-model="booksList.book.year" />
+	    			<input class="form-control" type="text" placeholder="Price" ng-model="booksList.book.price" />
+		    	</div>
+		    		<button class="btn btn-success" ng-click="booksList.addBook()" ng-show="state === 'add'">Add</button>
+		    		<button class="btn btn-success" ng-click="booksList.editBook()" ng-show="state === 'update'">Edit Book</button>
+		    		<button class="btn btn-danger" ng-click="booksList.deleteBook()" ng-show="state === 'update'">Remove Book</button>
+            <button class="btn btn-danger" ng-click="booksList.deleteBook()">Cancel</button>
+		    </form>
+		    <hr />
+  		</div>
+
+	  </div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+	<script src="js/bookLibrary.js"></script>
+  </body>
+</html>

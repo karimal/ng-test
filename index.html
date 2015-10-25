@@ -3,54 +3,38 @@
   <head>
   	<title>Books Library App</title>
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-    <style type="text/css">
-    	.form-control{
-    		margin-bottom: 10px;
-    		width: 40%;
-    	}
-    </style>
+    <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
   	<div class="container" ng-controller="BooksListController as booksList">
-  		<div>
-		    <h2>Books Library</h2>
+		  <h2>Books Library</h2>
+  		<div class="mlm">
 		    <br />
-		    <div>
-		    	<div>
-	    			<input class="form-control" type="text" placeholder="Book Name" ng-model="booksList.book.name" />
-	    			<input class="form-control" type="text" placeholder="Author" ng-model="booksList.book.author" />
-	    			<input class="form-control" type="text" placeholder="Publish Year" ng-model="booksList.book.year" />
-	    			<input class="form-control" type="text" placeholder="Price" ng-model="booksList.book.price" />
-		    	</div>
-		    		<button class="btn btn-success" ng-click="booksList.addBook()" ng-show="booksList.state == 'add'">Add Book</button>
-		    		<button class="btn btn-success" ng-click="booksList.editBook()" ng-show="booksList.state == 'select'">Edit Book</button>
-		    		<button class="btn btn-danger" ng-click="booksList.deleteBook()" ng-show="booksList.state == 'select'">Remove Book</button>
-		    </div>
-		    <hr />
-		    <h3>Books List</h3>
+		    <h3 class="pull-left mtn">Books List</h3>
+        <a class="btn btn-success pull-right mbs" href="./edit.html?state=add" target="_self">Add Book</a>
 		    <table class="table table-striped table-hover table-bordered">
 			    <thead>
 			      <tr>
+              <th></th>
 			        <th>Book Name</th>
 			        <th>Author</th>
-			        <th>Price</th>
 			        <th>Publish Year</th>
 			      </tr>
 			    </thead>
 			    <tbody>
 			      <tr ng-repeat="bookItem in booksList.books">
 			      	<td class="hide">{{bookItem.id}}</td>
+              <th><img src="{{bookItem.img}}" width="150"/></th>
 			        <td><a href="" ng-click="booksList.selectBook(bookItem.id)">{{bookItem.name}}</a></td>
 			        <td>{{bookItem.author}}</td>
 			        <td>{{bookItem.year}}</td>
-			        <td>{{bookItem.price}}</td>
 			      </tr>
 			    </tbody>
 		  	</table>
   		</div>
 
 	  </div>
-	
+
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
 	<script src="js/bookLibrary.js"></script>
   </body>
