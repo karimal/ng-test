@@ -2,7 +2,7 @@
 <html ng-app="bookLibraryApp">
   <head>
   	<title>Books Library App</title>
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
@@ -10,18 +10,23 @@
   		<div>
 		    <h2>Books Library</h2>
 		    <hr />
-		    <form>
-		    	<div>
-	    			<input class="form-control" type="text" placeholder="Book Name" ng-model="booksList.book.name" />
-	    			<input class="form-control" type="text" placeholder="Author" ng-model="booksList.book.author" />
-	    			<input class="form-control" type="text" placeholder="Publish Year" ng-model="booksList.book.year" />
-	    			<input class="form-control" type="text" placeholder="Price" ng-model="booksList.book.price" />
+        <h3 ng-show="state === 'add'">Add book</h3>
+        <h3 ng-show="state === 'update'">Update '{{book.name}}'</h3>
+		    <form class="row">
+          <div class="col-md-3" ng-show="state === 'update'">
+            <img ng-src="{{book.img}}" width="250" alt="" />
+          </div>
+		    	<div class="col-md-9">
+	    			<input class="form-control" type="text" placeholder="Book Name" ng-model="book.name" />
+	    			<input class="form-control" type="text" placeholder="Author" ng-model="book.author" />
+	    			<input class="form-control" type="text" placeholder="Image" ng-model="book.img" />
+	    			<input class="form-control" type="text" placeholder="Publish Year" ng-model="book.year" />
 		    	</div>
-		    		<button class="btn btn-success" ng-click="booksList.addBook()" ng-show="state === 'add'">Add</button>
-		    		<button class="btn btn-success" ng-click="booksList.editBook()" ng-show="state === 'update'">Edit Book</button>
-		    		<button class="btn btn-danger" ng-click="booksList.deleteBook()" ng-show="state === 'update'">Remove Book</button>
-            <button class="btn btn-danger" ng-click="booksList.deleteBook()">Cancel</button>
 		    </form>
+    		<a class="btn btn-success" ng-click="addBook()" ng-show="state === 'add'">Save</a>
+    		<a class="btn btn-success" ng-click="updateBook()" ng-show="state === 'update'">Save</a>
+    		<a class="btn btn-danger" ng-click="removeBook()" ng-show="state === 'update'">Remove</a>
+        <a class="btn btn-default" ng-click="backHome()">Cancel</a>
 		    <hr />
   		</div>
 

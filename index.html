@@ -8,6 +8,7 @@
   <body>
   	<div class="container" ng-controller="BooksListController as booksList">
 		  <h2>Books Library</h2>
+      <hr>
   		<div class="mlm">
 		    <br />
 		    <h3 class="pull-left mtn">Books List</h3>
@@ -24,7 +25,7 @@
 			    <tbody>
 			      <tr ng-repeat="bookItem in booksList.books">
 			      	<td class="hide">{{bookItem.id}}</td>
-              <th><img src="{{bookItem.img}}" width="150"/></th>
+              <th><img ng-src="{{bookItem.img}}" width="150"/></th>
 			        <td><a href="" ng-click="booksList.selectBook(bookItem.id)">{{bookItem.name}}</a></td>
 			        <td>{{bookItem.author}}</td>
 			        <td>{{bookItem.year}}</td>
